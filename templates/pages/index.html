@@ -40,6 +40,7 @@
             </div>
 
             <button type="submit" class="btn btn-success mt-4">Generate Newsletter</button>
+
         </form>
     </div>
 
@@ -47,10 +48,13 @@
         document.addEventListener("DOMContentLoaded", function () {
             const topicsContainer = document.getElementById("topics-container");
             const addTopicButton = document.getElementById("add-topic");
-            let topicCount = 0;
+
+            addTopicButton.addEventListener("click", function () {
+                createTopicInputs();
+            });
 
             function createTopicInputs() {
-                const topicIndex = topicCount + 1;
+                const topicIndex = topicsContainer.children.length + 1;
 
                 const topicGroup = document.createElement("div");
                 topicGroup.classList.add("form-group");
@@ -65,18 +69,7 @@
                 `;
 
                 topicsContainer.appendChild(topicGroup);
-                topicCount++;
             }
-
-            addTopicButton.addEventListener("click", function () {
-                if (topicCount < 3) {
-                    createTopicInputs();
-                } else {
-                    addTopicButton.setAttribute("disabled", "true");
-                }
-            });
-
-            createTopicInputs();
         });
     </script>
 

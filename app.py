@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, send_file
+from flask import Flask, render_template, request, redirect, url_for, send_file, make_response
 import os
 from jinja2 import Environment, FileSystemLoader
 
@@ -26,21 +26,23 @@ def index():
         tldrs = []
 
         # Loop through form fields to collect topics and tldrs
-        for i in range(1, 4):  # Assuming you have three topics and tldrs
-            topic_name = request.form.get(f'topic_name_{i}')
-            topic_content = request.form.get(f'topic_content_{i}')
-            tldr_content = request.form.get(f'tldr_content_{i}')
+        for field_name in request.form:
+            if field_name.startswith('topic_name_'):
+                topic_index = field_name.split('_')[-1]
+                topic_name = request.form[field_name]
+                topic_content = request.form.get(f'topic_content_{topic_index}')
+                tldr_content = request.form.get(f'tldr_content_{topic_index}')
 
-            if topic_name and topic_content:
-                topics.append({
-                    'topic_name': topic_name,
-                    'topic_content': topic_content,
-                })
+                if topic_name:
+                    topics.append({
+                        'topic_name': topic_name,
+                        'topic_content': topic_content,
+                    })
 
-            if tldr_content:
-                tldrs.append({
-                    'tldr_content': tldr_content,
-                })
+                if tldr_content:
+                    tldrs.append({
+                        'tldr_content': tldr_content,
+                    })
 
         # Create data dictionary
         data = {
@@ -86,6 +88,24 @@ def download(week_number):
         return send_file(newsletter_file_path, as_attachment=True)
     except FileNotFoundError:
         return render_template('pages/error.html')
+    
+@app.route('/view_generated_newsletter/<week_number>', methods=['GET'])
+def view_generated_newsletter(week_number):
+    # Define the file path for the generated newsletter
+    newsletter_file_path = os.path.join('outputs', f'week_{week_number}', f'week_{week_number}_newsletter.html')
+    
+    try:
+        # Open and read the newsletter content
+        with open(newsletter_file_path, 'r', encoding='utf-8') as file:
+            newsletter_content = file.read()
+        
+        # Create a response to display the content
+        response = make_response(newsletter_content)
+        response.headers["Content-Type"] = "text/html"
+        return response
+    except FileNotFoundError:
+        return render_template('pages/error.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
