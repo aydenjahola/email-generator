@@ -210,7 +210,7 @@
                                                             align="left">
                                                             <h1
                                                                 style="margin: 0px; color: #ffffff; line-height: 140%; text-align: center; word-wrap: break-word; font-family: Nunito; font-size: 35px; font-weight: 700;">
-                                                                {{ dynamic_heading }}</h1>
+                                                                Let’s Get Spooky!</h1>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -227,8 +227,7 @@
                                                             <div
                                                                 style="font-size: 14px; color: #e67e23; line-height: 140%; text-align: center; word-wrap: break-word;">
                                                                 <div>
-                                                                    <p style="line-height: 140%;"><em>week {{
-                                                                            week_number }} newsletter</em></p>
+                                                                    <p style="line-height: 140%;"><em>week 6 newsletter</em></p>
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -250,18 +249,24 @@
                                                                         style="color: #ffffff; line-height: 19.6px;"><strong>TL;DR</strong></span>
                                                                 </p>
                                                                 <ul>
-                                                                    {% for tldr in tldrs %}
+                                                                    
                                                                     <li style="line-height: 19.6px;"><span
-                                                                            style="color: #ffffff; line-height: 19.6px;">{{
-                                                                            tldr.tldr_content }}</span></li>
-                                                                    {% endfor %}
+                                                                            style="color: #ffffff; line-height: 19.6px;">This is the TL;DR for Topic 1.</span></li>
+                                                                    
+                                                                    <li style="line-height: 19.6px;"><span
+                                                                            style="color: #ffffff; line-height: 19.6px;">This is the TL;DR for Topic 2.</span></li>
+                                                                    
+                                                                    <li style="line-height: 19.6px;"><span
+                                                                            style="color: #ffffff; line-height: 19.6px;">This is the TL;DR for Topic 3.</span></li>
+                                                                    
                                                                 </ul>
                                                                 <p style="line-height: 140%;"><span
                                                                         style="color: #ffffff; line-height: 19.6px;">Hey
                                                                         Nerds,</span></p>
                                                                 <p style="line-height: 140%;"><span
-                                                                        style="color: #ffffff; line-height: 19.6px;">{{
-                                                                        intro }}</span></p>
+                                                                        style="color: #ffffff; line-height: 19.6px;">
+    Welcome to the sixth edition of the DCU Esports Newsletter! We hope you're all doing well and are ready for some spooky fun. Halloween is just around the corner, and we're excited to share some of our plans with you. We've got a lot of exciting events coming up, so make sure to keep an eye out for announcements. We hope you enjoy this week's newsletter, and we'll see you in the next one!
+        </span></p>
                                                                 <p style="line-height: 140%;"><span
                                                                         style="color: #ffffff; line-height: 19.6px;">
                                                                     </span>
@@ -274,7 +279,7 @@
 
 
                                             <!-- Iterate through topics and print each one -->
-                                            {% for topic in topics %}
+                                            
                                             <table style="font-family: arial, helvetica, sans-serif;"
                                                 role="presentation" cellpadding="0" cellspacing="0" width="100%"
                                                 border="0">
@@ -286,18 +291,62 @@
                                                             <div
                                                                 style="font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;">
                                                                 <p style="line-height: 140%;"><span
-                                                                        style="color: #ffffff; line-height: 19.6px;"><strong>{{
-                                                                            topic.topic_name }}</strong></span></p>
+                                                                        style="color: #ffffff; line-height: 19.6px;"><strong>Ireland Collegiate Esports Week 2</strong></span></p>
                                                                 <p style="line-height: 140%;"><span
-                                                                        style="color: #ffffff; line-height: 19.6px;">{{
-                                                                        topic.topic_content }}</span></p>
+                                                                        style="color: #ffffff; line-height: 19.6px;">
+        The Ireland Collegiate Esports League continues to gain momentum, and we're thrilled to announce that Week 2 is just around the corner! Today, our teams will once again battle it out in various games, aiming for glory and the top of the leaderboard. To all our participating teams, we wish you the best of luck. Let's show them what DCU Esports is made of! 
+        </span></p>
                                                                 <p style="line-height: 140%;"><strong> </strong></p>
                                                             </div>
                                                         </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            {% endfor %}
+                                            
+                                            <table style="font-family: arial, helvetica, sans-serif;"
+                                                role="presentation" cellpadding="0" cellspacing="0" width="100%"
+                                                border="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="v-container-padding-padding"
+                                                            style="overflow-wrap: break-word; word-break: break-word; padding: 10px; font-family: arial, helvetica, sans-serif;"
+                                                            align="left">
+                                                            <div
+                                                                style="font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;">
+                                                                <p style="line-height: 140%;"><span
+                                                                        style="color: #ffffff; line-height: 19.6px;"><strong>DCU B Team Triumphs on Valorant</strong></span></p>
+                                                                <p style="line-height: 140%;"><span
+                                                                        style="color: #ffffff; line-height: 19.6px;">
+        We're proud to share that our DCU B Team in Valorant recently achieved an impressive feat. They secured two victories and are now set to face off against some of the strongest teams in the league. It's fantastic to see our teams' hard work paying off, and we'll be cheering you on in your upcoming matches. 
+        </span></p>
+                                                                <p style="line-height: 140%;"><strong> </strong></p>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            
+                                            <table style="font-family: arial, helvetica, sans-serif;"
+                                                role="presentation" cellpadding="0" cellspacing="0" width="100%"
+                                                border="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="v-container-padding-padding"
+                                                            style="overflow-wrap: break-word; word-break: break-word; padding: 10px; font-family: arial, helvetica, sans-serif;"
+                                                            align="left">
+                                                            <div
+                                                                style="font-size: 14px; line-height: 140%; text-align: left; word-wrap: break-word;">
+                                                                <p style="line-height: 140%;"><span
+                                                                        style="color: #ffffff; line-height: 19.6px;"><strong>Valorant Bingo Event</strong></span></p>
+                                                                <p style="line-height: 140%;"><span
+                                                                        style="color: #ffffff; line-height: 19.6px;"> Get ready for some fun and games because we'll be hosting a Valorant Bingo Event soon. Keep an eye out for announcements and make sure to join in the action. Prize, fun, and Valorant – what's not to love?</span></p>
+                                                                <p style="line-height: 140%;"><strong> </strong></p>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            
 
                                         </div>
                                         <!--<![endif]-->
