@@ -6,29 +6,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Success</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-family: 'Georgia', serif;
+            color: #333;
+            font-size: 42px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #28a745;
+        }
+
+        .download-link {
+            color: #28a745;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 24px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn-success:hover {
+            background-color: #007bff;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Newsletter Generated</h1>
-        <p class="text-center mt-2">Created with love by <a href="https://github.com/aydenjahola" target="_blank">Ayden
-                Jahola</a></p>
+        <p class="text-center mt-2">Created with <span style="color: #ff4500;">&hearts;</span> by <a
+                href="https://github.com/aydenjahola" target="_blank">Ayden Jahola</a></p>
         <p class="text-center">You have successfully generated the newsletter for Week {{ week_number }}.</p>
         <p class="text-center"><a class="download-link"
                 href="{{ url_for('download', week_number=week_number) }}">Download the Newsletter</a></p>
         <p class="text-center view-link">
             <a href="{{ url_for('view_generated_newsletter', week_number=week_number) }}" target="_blank"
-                class="btn btn-success">View
-                Generated Newsletter</a>
+                class="btn btn-success">View Generated Newsletter</a>
         </p>
     </div>
 
     <footer class="text-center mt-5">
         <div class="footer">
-            <p>&copy; 2023 Ayden Jahola. All Rights Reserved.</a></p>
+            <p>&copy; 2023 Ayden Jahola. All Rights Reserved.</p>
         </div>
     </footer>
-
 </body>
 
 </html>

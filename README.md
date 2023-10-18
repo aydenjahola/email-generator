@@ -71,7 +71,7 @@ cd email-generator
 3. you can create your template in the `templates` directory. The template should include placeholders (using double curly braces) for dynamic content, which the script will replace.
 4. Run the script
 ```bash
-flask run
+flask run --debug
 ```
 5. Access the web GUI by opening a web browser and going to `http://localhost:5000`.
 6. Fill out the form with the appropriate information and click `Generate Newsletter`.

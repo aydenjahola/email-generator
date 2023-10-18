@@ -7,22 +7,23 @@
     <title>Error</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Georgia', serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background-color: #f9f9f9;
         }
 
         header {
             background-color: #2f4f4f;
             color: #ffffff;
             text-align: center;
-            padding: 1rem;
+            padding: 2rem 0;
         }
 
         h1 {
             margin: 0;
-            font-size: 32px;
+            font-size: 48px;
+            text-transform: uppercase;
         }
 
         .container {
@@ -30,12 +31,12 @@
             margin: 2rem auto;
             background-color: #ffffff;
             padding: 2rem;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
         }
 
         .error-message {
-            font-size: 24px;
+            font-size: 28px;
             text-align: center;
         }
 
@@ -43,14 +44,23 @@
             text-align: center;
             margin-top: 2rem;
         }
+
+        a {
+            text-decoration: none;
+            color: #ff4500;
+        }
+
+        a:hover {
+            color: #ff0000;
+        }
     </style>
 </head>
 
 <body>
     <header>
         <h1>Error</h1>
-        <p class="text-center mt-2">Created with love by <a href="https://github.com/aydenjahola" target="_blank">Ayden
-                Jahola</a></p>
+        <p class="text-center mt-2">Created with <span style="color: #ff4500;">&hearts;</span> by <a
+                href="https://github.com/aydenjahola" target="_blank">Ayden Jahola</a></p>
     </header>
     <div class="container">
         <p class="error-message">The requested newsletter does not exist or could not be found.</p>
@@ -58,10 +68,9 @@
 
     <footer class="text-center mt-5">
         <div class="footer">
-            <p>&copy; 2023 Ayden Jahola. All Rights Reserved.</a></p>
+            <p>&copy; 2023 Ayden Jahola. All Rights Reserved.</p>
         </div>
     </footer>
-
 </body>
 
 </html>
