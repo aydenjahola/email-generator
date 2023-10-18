@@ -97,7 +97,8 @@ flask run
 │   ├── week_5
 │   │   └── week_5_newsletter.html
 ├── templates
-│   ├── newsletter_template.html
+│   └── newsletter_template.html
+├── pages
 │   ├── index.html
 │   ├── success.html
 │   ├── error.html
