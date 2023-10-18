@@ -1,4 +1,4 @@
-# DCU Esports Newsletter Generator
+# Newsletter Generator
 
 This Python script generates newsletters for the DCU Esports community. It uses a Jinja2 template to create customized newsletters with dynamic content.
 
@@ -104,6 +104,17 @@ flask run
 │   ├── error.html
 └── README.md
 ```
+
+## TODO
+- [ ] production server
+- [ ] add more dynamic content
+- [ ] add more newsletter templates
+- [ ] add more newsletter examples
+- [ ] add more documentation
+- [ ] optimize the app more
+- [ ] add more error handling
+- [ ] add tests
+
 
 ## License
 
