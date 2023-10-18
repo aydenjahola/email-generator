@@ -97,10 +97,13 @@ flask run
 │   ├── week_5
 │   │   └── week_5_newsletter.html
 ├── templates
-│   └── newsletter_template.html
-├── pages
+│   ├── newsletter_template.html
 │   ├── index.html
 │   ├── success.html
 │   ├── error.html
 └── README.md
 ```
+
+## License
+
+This project is licensed under the AGPLv3 License - see the [LICENSE](LICENSE) file for details.

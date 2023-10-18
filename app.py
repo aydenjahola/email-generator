@@ -70,11 +70,11 @@ def index():
         with open(output_file_path, 'w', encoding='utf-8') as file:
             file.write(output)
 
-        return redirect(url_for('pages/success', week_number=week_number))
+        return redirect(url_for('success', week_number=week_number))
 
     return render_template('pages/index.html')
 
-@app.route('/pages/success/<week_number>', methods=['GET'])
+@app.route('/success/<week_number>', methods=['GET'])
 def success(week_number):
     return render_template('pages/success.html', week_number=week_number)
 

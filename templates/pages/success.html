@@ -11,10 +11,19 @@
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Newsletter Generated</h1>
+        <p class="text-center mt-2">Created with love by <a href="https://github.com/aydenjahola" target="_blank">Ayden
+                Jahola</a></p>
         <p class="text-center">You have successfully generated the newsletter for Week {{ week_number }}.</p>
         <p class="text-center"><a class="download-link"
                 href="{{ url_for('download', week_number=week_number) }}">Download the Newsletter</a></p>
     </div>
+
+    <footer class="text-center mt-5">
+        <div class="footer">
+            <p>&copy; 2023 Ayden Jahola. All Rights Reserved.</a></p>
+        </div>
+    </footer>
+
 </body>
 
 </html>
