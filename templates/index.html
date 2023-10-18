@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        form {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            display: block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            margin: 20px 0 10px;
+        }
+
+        hr {
+            border: 1px solid #ddd;
+            margin-top: 10px;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        p.footer {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Newsletter Generator</h1>
+    <form method="POST">
+        <label for="dynamic_heading">Dynamic Heading:</label>
+        <input type="text" id="dynamic_heading" name="dynamic_heading">
+
+        <label for="week_number">Week Number:</label>
+        <input type="text" id="week_number" name="week_number">
+
+        <label for="intro">Intro:</label>
+        <textarea id="intro" name="intro"></textarea>
+
+        <h2>Topics and TL;DRs</h2>
+        <hr>
+
+        <label>Topic 1:</label>
+        <input type="text" name="topic_name_1" placeholder="Topic Name">
+        <textarea name="topic_content_1" placeholder="Topic Content"></textarea>
+        <input type="text" name="tldr_content_1" placeholder="TL;DR Content">
+
+        <label>Topic 2:</label>
+        <input type="text" name="topic_name_2" placeholder="Topic Name">
+        <textarea name="topic_content_2" placeholder="Topic Content"></textarea>
+        <input type="text" name="tldr_content_2" placeholder="TL;DR Content">
+
+        <label>Topic 3:</label>
+        <input type="text" name="topic_name_3" placeholder="Topic Name">
+        <textarea name="topic_content_3" placeholder="Topic Content"></textarea>
+        <input type="text" name="tldr_content_3" placeholder="TL;DR Content">
+
+        <button type="submit">Generate Newsletter</button>
+    </form>
+    <p class="footer">
+        Created with love by <a href="https://github.com/aydenjahola" target="_blank">Ayden Jahola</a>
+    </p>
+</body>
+
+</html>
