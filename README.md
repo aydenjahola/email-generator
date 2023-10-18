@@ -6,6 +6,7 @@ This Python script generates newsletters for the DCU Esports community. It uses 
 - [Getting Started](#getting-started)
 - [Prerequisites](#prerequisites)
 - [Usage](#usage)
+- [Web GUI](#web-gui)
 - [Directory Structure](#directory-structure)
 
 ## Getting Started
@@ -16,13 +17,25 @@ Follow the instructions below to get started with the DCU Esports Newsletter Gen
 
 - Python 3.x
 - Jinja2 (Python template engine)
-  
+- Flask (for the web GUI)
+
 You can install Jinja2 using pip:
+
 ```bash
 pip install Jinja2
 ```
 
+You can install Flask using pip:
+
+```bash
+pip install Flask
+```
+
 ### Usage
+
+#### Manual Generation (auto_generate.py)
+
+If you prefer the manual way of generating newsletters, follow these steps:
 
 1. Clone the repository
 ```bash
@@ -43,11 +56,35 @@ python3 auto_generator.py
 8. The script will generate the newsletter, create an output directory based on the `week_number`, and save the newsletter in that directory.
 9. You can find the generated newsletters in the `outputs` directory. Each newsletter is saved in a subdirectory named after the week number.
 
+#### Web GUI (app.py)
+
+If you prefer a web GUI to generate newsletters, follow these steps:
+
+1. Clone the repository
+```bash
+git clone git@github.com:aydenjahola/email-generator.git
+```
+2. Navigate to the project directory
+```bash
+cd email-generator
+```
+3. you can create your template in the `templates` directory. The template should include placeholders (using double curly braces) for dynamic content, which the script will replace.
+4. Run the script
+```bash
+flask run
+```
+5. Access the web GUI by opening a web browser and going to `http://localhost:5000`.
+6. Fill out the form with the appropriate information and click `Generate Newsletter`.
+7. The script will generate the newsletter, create an output directory based on the `week_number`, and save the newsletter in that directory.
+8. You can find the generated newsletters in the `outputs` directory. Each newsletter is saved in a subdirectory named after the week number.
+
+
 ## Directory Structure
 
 ```bash
 .
 ├── auto_generator.py
+├── app.py
 ├── outputs
 │   ├── week_1
 │   │   └── week_1_newsletter.html
@@ -59,7 +96,11 @@ python3 auto_generator.py
 │   │   └── week_4_newsletter.html
 │   ├── week_5
 │   │   └── week_5_newsletter.html
-|-- templates
+├── templates
 │   └── newsletter_template.html
+├── pages
+│   ├── index.html
+│   ├── success.html
+│   ├── error.html
 └── README.md
 ```

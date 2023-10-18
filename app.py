@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, send_file
 import os
 from jinja2 import Environment, FileSystemLoader
 
+# Initialize the Flask app
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
 
 # Define the template directory and file
 template_dir = 'templates'
@@ -21,29 +21,35 @@ def index():
         week_number = request.form['week_number']
         intro = request.form['intro']
 
-        # Get topics and tldr_data from the form
+        # Initialize empty lists for topics and tldrs
         topics = []
         tldrs = []
 
-        for i in range(1, 4):
-            topic_name = request.form[f'topic_name_{i}']
-            topic_content = request.form[f'topic_content_{i}']
-            tldr_content = request.form[f'tldr_content_{i}']
+        # Loop through form fields to collect topics and tldrs
+        for i in range(1, 4):  # Assuming you have three topics and tldrs
+            topic_name = request.form.get(f'topic_name_{i}')
+            topic_content = request.form.get(f'topic_content_{i}')
+            tldr_content = request.form.get(f'tldr_content_{i}')
 
-            topics.append({'topic_name': topic_name, 'topic_content': topic_content})
-            tldrs.append({'tldr_content': tldr_content})
+            if topic_name and topic_content:
+                topics.append({
+                    'topic_name': topic_name,
+                    'topic_content': topic_content,
+                })
+
+            if tldr_content:
+                tldrs.append({
+                    'tldr_content': tldr_content,
+                })
 
         # Create data dictionary
         data = {
             'dynamic_heading': dynamic_heading,
             'week_number': week_number,
             'intro': intro,
-            'tldrs': tldrs,  # Pass the tldr data
             'topics': topics,
+            'tldrs': tldrs,
         }
-
-        # Render the template with all the topic data
-        output = template.render(data)
 
         # Define the directory for saving the newsletters
         output_directory = 'outputs'
@@ -57,18 +63,29 @@ def index():
         # Define the output file path
         output_file_path = os.path.join(week_directory, f'week_{week_number}_newsletter.html')
 
+        # Render the template with all the topic data
+        output = template.render(data)
+
         # Save the generated newsletter with the updated file name
         with open(output_file_path, 'w', encoding='utf-8') as file:
             file.write(output)
 
-        flash('Newsletter generated successfully!', 'success')
-        return redirect(url_for('success'))
+        return redirect(url_for('pages/success', week_number=week_number))
 
-    return render_template('index.html')
+    return render_template('pages/index.html')
 
-@app.route('/success')
-def success():
-    return render_template('success.html')
+@app.route('/pages/success/<week_number>', methods=['GET'])
+def success(week_number):
+    return render_template('pages/success.html', week_number=week_number)
+
+@app.route('/download/<week_number>', methods=['GET'])
+def download(week_number):
+    try:
+        # Define the file path for the generated newsletter
+        newsletter_file_path = os.path.join('outputs', f'week_{week_number}', f'week_{week_number}_newsletter.html')
+        return send_file(newsletter_file_path, as_attachment=True)
+    except FileNotFoundError:
+        return render_template('pages/error.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Newsletter Generated</h1>
+        <p class="text-center">You have successfully generated the newsletter for Week {{ week_number }}.</p>
+        <p class="text-center"><a class="download-link"
+                href="{{ url_for('download', week_number=week_number) }}">Download the Newsletter</a></p>
+    </div>
+</body>
+
+</html>

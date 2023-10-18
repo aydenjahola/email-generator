@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter Generator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Newsletter Generator</h1>
+        <form method="POST">
+            <!-- Dynamic data inputs -->
+            <div class="form-group">
+                <label for="dynamic_heading">Heading</label>
+                <input type="text" class="form-control" name="dynamic_heading" required>
+            </div>
+            <div class="form-group">
+                <label for="week_number">Week Number</label>
+                <input type="text" class="form-control" name="week_number" required>
+            </div>
+            <div class="form-group">
+                <label for="intro">Introduction</label>
+                <textarea class="form-control" name="intro" rows="4" required></textarea>
+            </div>
+
+            <!-- Topics and TLDR inputs (up to 3) -->
+            <h3>Topics and TL;DR</h3>
+            <hr>
+            <button type="button" class="btn btn-primary" id="add-topic">Add New Topic</button>
+            <div id="topics-container">
+                <!-- Dynamic content will be added here -->
+            </div>
+
+            <button type="submit" class="btn btn-success mt-4">Generate Newsletter</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const topicsContainer = document.getElementById("topics-container");
+            const addTopicButton = document.getElementById("add-topic");
+            let topicCount = 0;
+
+            function createTopicInputs() {
+                const topicIndex = topicCount + 1;
+
+                const topicGroup = document.createElement("div");
+                topicGroup.classList.add("form-group");
+                topicGroup.innerHTML = `
+                    <h4>Topic ${topicIndex}</h4>
+                    <label for="topic_name_${topicIndex}">Topic Name</label>
+                    <input type="text" class="form-control" name="topic_name_${topicIndex}">
+                    <label for="topic_content_${topicIndex}">Topic Content</label>
+                    <textarea class="form-control" name="topic_content_${topicIndex}" rows="4"></textarea>
+                    <label for="tldr_content_${topicIndex}">TL;DR</label>
+                    <input type="text" class="form-control" name="tldr_content_${topicIndex}">
+                `;
+
+                topicsContainer.appendChild(topicGroup);
+                topicCount++;
+            }
+
+            addTopicButton.addEventListener("click", function () {
+                if (topicCount < 3) {
+                    createTopicInputs();
+                } else {
+                    addTopicButton.setAttribute("disabled", "true");
+                }
+            });
+
+            createTopicInputs();
+        });
+    </script>
+
+</body>
+
+</html>
