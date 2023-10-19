@@ -15,3 +15,4 @@ EXPOSE 4000
 
 # Run app.py when the container launches
 CMD ["gunicorn", "wsgi:app", "-b", "0.0.0.0:4000"]
+
