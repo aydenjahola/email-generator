@@ -1,0 +1,22 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./app:/app
+    environment:
+      - FLASK_ENV=production
+    command: ["gunicorn", "wsgi:app", "-b", "0.0.0.0:80"]
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.email-generator.entrypoints=https"
+      - "traefik.http.routers.email-generator.rule=Host(`email-generator.local.aydenjahola.com`)"
+      - "traefik.http.services.email-generator.loadbalancer.server.port=4000"  # Update the port
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true

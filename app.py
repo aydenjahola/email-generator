@@ -13,6 +13,7 @@ template_file = 'newsletter_template.html'
 env = Environment(loader=FileSystemLoader(template_dir))
 template = env.get_template(template_file)
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -30,7 +31,8 @@ def index():
             if field_name.startswith('topic_name_'):
                 topic_index = field_name.split('_')[-1]
                 topic_name = request.form[field_name]
-                topic_content = request.form.get(f'topic_content_{topic_index}')
+                topic_content = request.form.get(
+                    f'topic_content_{topic_index}')
                 tldr_content = request.form.get(f'tldr_content_{topic_index}')
 
                 if topic_name:
@@ -63,7 +65,8 @@ def index():
         os.makedirs(week_directory, exist_ok=True)
 
         # Define the output file path
-        output_file_path = os.path.join(week_directory, f'week_{week_number}_newsletter.html')
+        output_file_path = os.path.join(
+            week_directory, f'week_{week_number}_newsletter.html')
 
         # Render the template with all the topic data
         output = template.render(data)
@@ -76,29 +79,34 @@ def index():
 
     return render_template('pages/index.html')
 
+
 @app.route('/success/<week_number>', methods=['GET'])
 def success(week_number):
     return render_template('pages/success.html', week_number=week_number)
+
 
 @app.route('/download/<week_number>', methods=['GET'])
 def download(week_number):
     try:
         # Define the file path for the generated newsletter
-        newsletter_file_path = os.path.join('outputs', f'week_{week_number}', f'week_{week_number}_newsletter.html')
+        newsletter_file_path = os.path.join(
+            'outputs', f'week_{week_number}', f'week_{week_number}_newsletter.html')
         return send_file(newsletter_file_path, as_attachment=True)
     except FileNotFoundError:
         return render_template('pages/error.html')
-    
+
+
 @app.route('/view_generated_newsletter/<week_number>', methods=['GET'])
 def view_generated_newsletter(week_number):
     # Define the file path for the generated newsletter
-    newsletter_file_path = os.path.join('outputs', f'week_{week_number}', f'week_{week_number}_newsletter.html')
-    
+    newsletter_file_path = os.path.join(
+        'outputs', f'week_{week_number}', f'week_{week_number}_newsletter.html')
+
     try:
         # Open and read the newsletter content
         with open(newsletter_file_path, 'r', encoding='utf-8') as file:
             newsletter_content = file.read()
-        
+
         # Create a response to display the content
         response = make_response(newsletter_content)
         response.headers["Content-Type"] = "text/html"

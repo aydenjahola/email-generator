@@ -114,6 +114,7 @@ flask run --debug
 - [ ] optimize the app more
 - [ ] add more error handling
 - [ ] add tests
+- [ ] add copy button
 
 
 ## License
