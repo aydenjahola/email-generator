@@ -19,23 +19,20 @@ Follow the instructions below to get started with the DCU Esports Newsletter Gen
 - Jinja2 (Python template engine)
 - Flask (for the web GUI)
 
-You can install Jinja2 using pip:
+You can install the requirements using pip:
 
 ```bash
-pip install Jinja2
+pip install -r requirements.txt
 ```
 
-You can install Flask using pip:
-
-```bash
-pip install Flask
-```
 
 ### Usage
 
 #### Manual Generation (auto_generate.py)
 
 If you prefer the manual way of generating newsletters, follow these steps:
+
+**Note:** Not all features are available in the manual generation method. Use the web GUI for the full experience.
 
 1. Clone the repository
 ```bash
