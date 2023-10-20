@@ -75,6 +75,14 @@ flask run --debug
 7. The script will generate the newsletter, create an output directory based on the `week_number`, and save the newsletter in that directory.
 8. You can find the generated newsletters in the `outputs` directory. Each newsletter is saved in a subdirectory named after the week number.
 
+## Deploy on docker
+
+to deploy on docker you can use the script `deploy.sh` to build and run the container
+
+```bash
+./deploy.sh
+```
+
 
 ## Directory Structure
 
