@@ -22,10 +22,19 @@ if [ $? -eq 0 ]; then
     # Check if docker-compose started successfully
     if [ $? -eq 0 ]; then
         echo "docker-compose up -d completed successfully."
+
+        # Add a sleep delay (5 seconds) before pruning unused Docker images
+        echo "Sleeping for 5 seconds..."
+        sleep 15
+
+        # Prune unused Docker images
+        echo "Removing unused Docker images..."
+        docker image prune -f
+
+        echo "Unused Docker images removed."
     else
         echo "Error: docker-compose up -d failed."
     fi
 else
     echo "Error: Docker container build failed."
 fi
-

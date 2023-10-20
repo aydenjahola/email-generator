@@ -7,6 +7,7 @@ This Python script generates newsletters for the DCU Esports community. It uses 
 - [Prerequisites](#prerequisites)
 - [Usage](#usage)
 - [Web GUI](#web-gui)
+- [Deploy on docker](#deploy-on-docker)
 - [Directory Structure](#directory-structure)
 
 ## Getting Started
