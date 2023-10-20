@@ -106,7 +106,7 @@ flask run --debug
 ```
 
 ## TODO
-- [ ] production server
+- [x] ~~production server~~
 - [ ] add more dynamic content
 - [ ] add more newsletter templates
 - [ ] add more newsletter examples

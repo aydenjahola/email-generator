@@ -80,6 +80,18 @@
         <p class="text-center mt-2">Created with <span style="color: #e70000;">&hearts;</span> by <a
                 href="https://github.com/aydenjahola" target="_blank">Ayden Jahola</a></p>
         <form method="POST">
+
+            <!-- Template selection dropdown -->
+            <div class="form-group">
+                <label for="selected_template">Select a template:</label>
+                <select name="selected_template" id="selected_template" class="form-control">
+                    {% for template_file in template_files %}
+                    <option value="{{ template_file }}">{{ template_file }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+
             <!-- Dynamic data inputs -->
             <div class="form-group">
                 <label for="dynamic_heading">Heading</label>
@@ -131,6 +143,15 @@
 
                 topicsContainer.appendChild(topicGroup);
             }
+
+            // Update form action URL when template is selected
+            const selectedTemplateDropdown = document.getElementById("selected_template");
+            const newsletterForm = document.getElementById("newsletter-form");
+
+            selectedTemplateDropdown.addEventListener("change", function () {
+                const selectedTemplate = selectedTemplateDropdown.value;
+                newsletterForm.action = `/generate/${selectedTemplate}`;
+            });
         });
     </script>
 

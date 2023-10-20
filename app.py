@@ -7,16 +7,36 @@ app = Flask(__name__)
 
 # Define the template directory and file
 template_dir = 'templates'
-template_file = 'newsletter_template.html'
 
-# Load the template
-env = Environment(loader=FileSystemLoader(template_dir))
-template = env.get_template(template_file)
+# Function to get a list of available templates
+
+
+def get_available_templates():
+    template_files = []
+    for root, _, files in os.walk(template_dir):
+        for file in files:
+            template_path = os.path.join(root, file)
+            if not template_path.startswith(os.path.join(template_dir, "pages")):
+                template_files.append(file)
+    return template_files
 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+
+    # Get the list of available templates
+    template_files = get_available_templates()
+
     if request.method == 'POST':
+
+        # Get selected template from the dropdown menu
+        selected_template = request.form['selected_template']
+
+        # Load the selected template
+        template_file = os.path.join(template_dir, selected_template)
+        env = Environment(loader=FileSystemLoader(template_dir))
+        template = env.get_template(selected_template)
+
         # Get dynamic data from the form
         dynamic_heading = request.form['dynamic_heading']
         week_number = request.form['week_number']
@@ -77,7 +97,7 @@ def index():
 
         return redirect(url_for('success', week_number=week_number))
 
-    return render_template('pages/index.html')
+    return render_template('pages/index.html', template_files=template_files)
 
 
 @app.route('/success/<week_number>', methods=['GET'])
