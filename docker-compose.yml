@@ -6,12 +6,13 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.email-generator.entrypoints=https"
-      - "traefik.http.routers.email-generator.rule=Host(`email-generator.local.aydenjahola.com`)"
+      - "traefik.http.routers.email-generator.rule=Host(`generator.local.aydenjahola.com`) || Host(`generator.aydenjahola.com`)"
       - "traefik.http.services.email-generator.loadbalancer.server.port=4000"
+      - "traefik.http.routers.email-generator.middlewares=genAuth"
+      - "traefik.http.middlewares.genAuth.basicauth.users=ayden:$$apr1$$nyzTdLWx$$1AynoObv285LoyHoypW4Y/,esports:$$apr1$$iGH5wvoQ$$vbz2xH7XGSnz5IQ4jUQf.1"
     networks:
       - proxy
 
 networks:
   proxy:
     external: true
-
