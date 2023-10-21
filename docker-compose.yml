@@ -3,6 +3,7 @@ version: '3'
 services:
   app:
     image: email-generator
+    container_name: email_generator
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.email-generator.entrypoints=https"
